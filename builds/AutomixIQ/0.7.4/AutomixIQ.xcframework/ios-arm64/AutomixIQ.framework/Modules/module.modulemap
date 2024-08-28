@@ -1,0 +1,12 @@
+framework module AutomixIQ {
+  umbrella header "AutomixIQ-umbrella.h"
+  header "automix-sdk/AutomixSDK.h"
+
+  export *
+  module * { export * }
+}
+
+module AutomixIQ.Swift {
+  header "AutomixIQ-Swift.h"
+  requires objc
+}
