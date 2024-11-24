@@ -1,10 +1,10 @@
 Pod::Spec.new do |s|
   s.name             = 'PacemakerRadio'
-  s.version          = '0.10.9'
+  s.version          = '0.11.0'
   s.summary          = 'This library contains the Pacemaker Radio Engine and exposes functions to use it.'
   s.description      = 'This library contains the Pacemaker Radio Engine and exposes functions to use it.'
   s.homepage         = 'https://www.tunedglobal.com'
-  s.license          = { :type => 'MIT', :file => 'builds/PacemakerRadio/0.10.9/PacemakerRadio-LICENSE' }
+  s.license          = { :type => 'MIT', :file => 'builds/PacemakerRadio/0.11.0/PacemakerRadio-LICENSE' }
   s.author           = { 'vic' => 'victor.garcia@tunedglobal.com' }
   s.source           = { :git => 'https://github.com/tunedglobal/automix-ios-framework.git',
                          :tag => 'PacemakerRadio/' + s.version.to_s,
@@ -12,7 +12,7 @@ Pod::Spec.new do |s|
   s.dependency 'glm', '~>0.9.4.3'
   s.dependency 'OpenSSL-Universal', '~>1.1.1900'
   s.frameworks = 'Accelerate', 'AudioToolbox', 'Security', 'AVFoundation', 'SafariServices'
-  s.vendored_frameworks = "builds/PacemakerRadio/0.10.9/PacemakerRadio.xcframework"
+  s.vendored_frameworks = "builds/PacemakerRadio/0.11.0/PacemakerRadio.xcframework"
   s.platform = :ios
   s.swift_version    = '5.5'
   s.ios.deployment_target  = '13.0'
