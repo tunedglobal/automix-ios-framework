@@ -1,0 +1,986 @@
+// swift-interface-format-version: 1.0
+// swift-compiler-version: Apple Swift version 6.0.2 effective-5.10 (swiftlang-6.0.2.1.2 clang-1600.0.26.4)
+// swift-module-flags: -target arm64-apple-ios13.0 -enable-objc-interop -enable-library-evolution -swift-version 5 -enforce-exclusivity=checked -O -enable-bare-slash-regex -module-name PacemakerRadio
+// swift-module-flags-ignorable: -no-verify-emitted-module-interface
+import AVFoundation
+import AVKit
+import CoreData
+import DeveloperToolsSupport
+import Foundation
+import Network
+@_exported import PacemakerRadio
+import QuartzCore
+import Swift
+import SwiftUI
+import UIKit
+import _Concurrency
+import _StringProcessing
+import _SwiftConcurrencyShims
+import os.lock
+import os
+@_inheritsConvenienceInitializers @objc public class AutomixSDK : ObjectiveC.NSObject {
+  @objc public static func automixSDKError(code: PacemakerRadio.AutomixSDKErrorCode) -> Foundation.NSError
+  @objc public static func errorDescription(code: PacemakerRadio.AutomixSDKErrorCode) -> Swift.String?
+  @objc public static func initialised() -> Swift.Bool
+  @objc public static func internetAvailable() -> Swift.Bool
+  @objc public func terminate()
+  @objc public static let instance: PacemakerRadio.AutomixSDK
+  @objc public func clearCache(completion: ((_ error: (any Swift.Error)?) -> Swift.Void)?)
+  @objc public func setMusicCacheDelegate(_ musicCacheDelegate: any PacemakerRadio.TunedMusicCacheDelegate)
+  @objc public func addStatusObserverDelegate(_ statusObserverDelegate: any PacemakerRadio.AutomixSDKStatusObserverDelegate)
+  @objc public func removeStatusObserverDelegate(_ statusObserverDelegate: any PacemakerRadio.AutomixSDKStatusObserverDelegate)
+  @objc public func automixOn(completion: ((_ error: (any Swift.Error)?) -> Swift.Void)?)
+  @objc public func automixOn(identifiers: [Swift.String], metadata: [PacemakerRadio.AutomixSDKTrackModel]?, playTrackIndex: Swift.Int32, seconds: Swift.Float, autoplay: Swift.Bool, contextType: Swift.String?, contextId: Swift.String?, completion: ((_ error: (any Swift.Error)?) -> Swift.Void)?)
+  @objc public func automixOff(completion: ((_ error: (any Swift.Error)?, _ status: PacemakerRadio.AutomixSDKStatus) -> Swift.Void)?)
+  @objc public func resetPlaylistToEmpty(completion: ((_ error: (any Swift.Error)?) -> Swift.Void)?)
+  @objc public func loadTracks(identifiers: [Swift.String], metadata: [PacemakerRadio.AutomixSDKTrackModel]?, playTrackIndex: Swift.Int32, seconds: Swift.Float, autoplay: Swift.Bool, contextType: Swift.String?, contextId: Swift.String?, completion: ((_ error: (any Swift.Error)?) -> Swift.Void)?)
+  @objc public func addTracks(identifiers: [Swift.String], metadata: [PacemakerRadio.AutomixSDKTrackModel]?, index: Swift.Int32, completion: ((_ error: (any Swift.Error)?) -> Swift.Void)?)
+  @objc public func addTrack(identifier: Swift.String, metadata: PacemakerRadio.AutomixSDKTrackModel?, index: Swift.Int32, completion: ((_ error: (any Swift.Error)?) -> Swift.Void)?)
+  @objc public func removeTrack(at index: Swift.Int32, completion: ((_ error: (any Swift.Error)?) -> Swift.Void)?)
+  @objc public func moveTrack(at index: Swift.Int32, toIndex: Swift.Int32, completion: ((_ error: (any Swift.Error)?) -> Swift.Void)?)
+  @objc public func play(completion: ((_ error: (any Swift.Error)?) -> Swift.Void)?)
+  @objc public func pause(completion: ((_ error: (any Swift.Error)?) -> Swift.Void)?)
+  @objc public func next(completion: ((_ error: (any Swift.Error)?) -> Swift.Void)?)
+  @objc public func previous(completion: ((_ error: (any Swift.Error)?) -> Swift.Void)?)
+  @objc public func back(completion: ((_ error: (any Swift.Error)?) -> Swift.Void)?)
+  @available(*, deprecated, message: "Toggles are evil, please use setReplay(on:completion:)")
+  @objc public func toggleReplay(completion: ((_ error: (any Swift.Error)?) -> Swift.Void)?)
+  @objc public func setReplay(on: Swift.Bool, completion: ((_ error: (any Swift.Error)?) -> Swift.Void)?)
+  @objc public func seekTo(seconds: Swift.Float, completion: ((_ error: (any Swift.Error)?) -> Swift.Void)?)
+  @objc public func skipToTrackAtIndex(_ index: Swift.Int, completion: ((_ error: (any Swift.Error)?) -> Swift.Void)?)
+  @objc public func setFilterExplicit(filterExplicit: Swift.Bool, completion: ((_ error: (any Swift.Error)?) -> Swift.Void)?)
+  @objc public func reorderTracks(newOrder: [Swift.String], completion: ((_ error: (any Swift.Error)?) -> Swift.Void)?)
+  @objc public func playTrackUntilEndThenPause(completion: ((_ error: (any Swift.Error)?) -> Swift.Void)?)
+  @objc public func setAutomixPlaySpeed(_ playSpeed: Swift.Float, completion: ((_ error: (any Swift.Error)?) -> Swift.Void)?)
+  @objc public func setAutomixVolumeNormalised(_ volumeNormalised: Swift.Float, completion: ((_ error: (any Swift.Error)?) -> Swift.Void)?)
+  @available(*, deprecated, message: "Toggles are evil, please use setMute(on:completion:)")
+  @objc public func toggleMute(completion: ((_ error: (any Swift.Error)?) -> Swift.Void)?)
+  @objc public func setMute(on: Swift.Bool, completion: ((_ error: (any Swift.Error)?) -> Swift.Void)?)
+  @objc public func setPreferredTransitionDurationSeconds(_ duration: Swift.Float, completion: ((_ error: (any Swift.Error)?) -> Swift.Void)?)
+  @objc public func loopPlayingTrack(completion: ((_ error: (any Swift.Error)?) -> Swift.Void)?)
+  @objc public func stopLoopingPlayingTrack(completion: ((_ error: (any Swift.Error)?) -> Swift.Void)?)
+  @objc public func setVinylStartStopEnabled(_ enabled: Swift.Bool, completion: ((_ error: (any Swift.Error)?) -> Swift.Void)?)
+  @objc public func on() -> Swift.Bool
+  @objc public func setWaveformPointsPerTrack(_ waveformPointsPerTrack: Swift.Int32)
+  @objc public func waveformDataForTrack(identifier: Swift.String, applyTransitions: Swift.Bool) -> PacemakerRadio.AutomixSDKWaveformModel?
+  @objc public func waveformDataForTrack(identifier: Swift.String, applyEnterTransition: Swift.Bool, applyExitTransition: Swift.Bool) -> PacemakerRadio.AutomixSDKWaveformModel?
+  @objc public func placeholderWaveformDataForTrack(identifier: Swift.String) -> PacemakerRadio.AutomixSDKWaveformModel?
+  @objc public func automixStatus() -> PacemakerRadio.AutomixSDKStatus?
+  @objc override dynamic public init()
+  @objc deinit
+}
+@objc public enum AutomixSDKPlaybackEventType : Swift.Int {
+  case trackPlayStart = 0
+  case trackPlayPlayed5Secs
+  case trackPlayHeartbeat30Secs
+  case trackPlayStartMixingIntoNext
+  case trackPlaySkipped
+  case trackPlayFinished
+  case mixPlaybackEnded
+  public init?(rawValue: Swift.Int)
+  public typealias RawValue = Swift.Int
+  public var rawValue: Swift.Int {
+    get
+  }
+}
+@objc public enum AutomixSDKErrorCode : Swift.Int {
+  case sdkAlreadyInitialised = 1001
+  case sdkInitialisationUnauthorised
+  case noInternetAvailable
+  case noInternetAvailableTooLongOffline
+  case offlineNoTunedUserIdAvailable
+  case notMainThread
+  case sdkNotInitialised
+  case sdkNotInitialisedVersionNoLongerSupported
+  case sdkNotOn
+  case sdkAlreadyOn
+  case loadTracksEmptyPlaylist
+  case loadTracksOutOfBounds
+  case addTrackPlaylistDoesNotExist
+  case addTrackOutOfBounds
+  case addTrackNoMetadata
+  case addTrackInternalError
+  case removeTrackOutOfBounds
+  case playAlreadyPlaying
+  case pauseAlreadyPaused
+  case nextNoTrackAvailable
+  case previousNoTrackAvailable
+  case backNoTrackAvailable
+  case seekNoTrackAvailable
+  case seekNoCurrentTrack
+  case reorderMissingTrack
+  case playToEndMissingTrack
+  case playToEndMixEnd
+  case moveTrackOutOfBounds
+  case startLoopingNoLoopingTrack
+  case stopLoopingNoLoopingTrack
+  case unable_to_load_mix
+  case unimplemented
+  case cancelled
+  case onAlreadyTurningOn
+  case onWhileTurningOff
+  case offAlreadyTurningOff
+  case offWhileTurningOn
+  case cannotCreateChannelLayout
+  case cannotCreateInputBuffer
+  case cannotSetupAVAudioSession
+  case cannotStartAudioEngine
+  case cannotRestoreAudioSession
+  case failedToStop
+  case cannotLoadExplicitLyricsTrack
+  public init?(rawValue: Swift.Int)
+  public typealias RawValue = Swift.Int
+  public var rawValue: Swift.Int {
+    get
+  }
+}
+public func sdkError(code: PacemakerRadio.AutomixSDKErrorCode) -> any Swift.Error
+@objc public enum AutomixSDKLogLevel : Swift.Int {
+  case logLevelTrace = 0
+  case logLevelDebug
+  case logLevelInfo
+  case logLevelWarning
+  case logLevelError
+  case logLevelFatal
+  public init?(rawValue: Swift.Int)
+  public typealias RawValue = Swift.Int
+  public var rawValue: Swift.Int {
+    get
+  }
+}
+@objc public protocol AutomixSDKStreamingDelegate : ObjectiveC.NSObjectProtocol {
+  @objc optional func logAutomixSDKMessage(logLevel: PacemakerRadio.AutomixSDKLogLevel, message: Swift.String)
+  @objc func isLoggedIn() -> Swift.Bool
+  @objc func asyncCheckDeviceStatus(completion: @escaping (_ error: (any Swift.Error)?, _ canContinuePlaying: Swift.Bool) -> Swift.Void)
+  @objc func getDeviceIdentifier() -> Swift.String?
+  @objc func asyncGetStream(streamingDeviceId: Swift.String, sessionId: Swift.String, trackId: Swift.String, completion: @escaping (_ error: (any Swift.Error)?, _ url: Swift.String?, _ newSessionId: Swift.String?) -> Swift.Void)
+  @objc func asyncGetTrackMetadata(trackId: Swift.String, completion: @escaping (_ error: (any Swift.Error)?, _ track: PacemakerRadio.AutomixSDKTrackModel?) -> Swift.Void)
+  @objc func trackDownloadCompleted(trackId: Swift.String, data: Foundation.NSData)
+  @objc func trackDownloadProgressChanged(trackId: Swift.String, progress: Swift.Float)
+  @objc func syncGetCachedTrack(trackId: Swift.String) -> Foundation.Data?
+  @objc func syncGetTrackMetadata(trackId: Swift.String?) -> PacemakerRadio.AutomixSDKTrackModel?
+  @objc func cacheMetadata(_ metadata: [PacemakerRadio.AutomixSDKTrackModel])
+  @objc func asyncGetThumborLocation(completion: @escaping (_ url: Swift.String?) -> Swift.Void)
+  @objc func asyncGetTrackRecommendations(identifiers: [Swift.String], limit: Swift.Int, completion: @escaping (_ tracks: [PacemakerRadio.AutomixSDKTrackModel]?) -> Swift.Void)
+}
+@objc public class AutomixSDKConfig : ObjectiveC.NSObject {
+  @objc public init(apiKey: Swift.String, country: Swift.String, storeId: Swift.String, applicationId: Swift.String)
+  @objc public var apiKey: Swift.String
+  @objc public var country: Swift.String
+  @objc public var storeId: Swift.String
+  @objc public var applicationId: Swift.String
+  @objc deinit
+}
+@objc public class RadioSDKUIConfig : ObjectiveC.NSObject {
+  @objc public init(fontFamily: Swift.String = "HelveticaNeue", titleFontSize: Swift.Int = 14, radioUIFontSizeHuge: Swift.Int = 40, radioUIFontSizeLarge: Swift.Int = 16, radioUIFontSizeRegular: Swift.Int = 14, radioUIFontSizeSmall: Swift.Int = 12, radioUIFontSizeTiny: Swift.Int = 10, radioUIFontSizeMatchMachine: Swift.Int = 20, textFieldFontBold: Swift.Bool = false, textFieldBackgroundColor: UIKit.UIColor = UIColor.init(white: 0.2, alpha: 1), textFieldBorderRadius: Swift.Float = 5, textFieldTextColor: UIKit.UIColor = UIColor.white, textFieldPlaceholderTextColor: UIKit.UIColor = UIColor.black, dialogTitleFontBold: Swift.Bool = false, dialogTitleTextColor: UIKit.UIColor = UIColor.white, dialogDescriptionFontBold: Swift.Bool = false, dialogDescriptionTextColor: UIKit.UIColor = UIColor.white, dialogPrimaryButtonFontBold: Swift.Bool = false, dialogPrimaryButtonBackgroundColor: UIKit.UIColor = UIColor.clear, dialogPrimaryButtonBorderRadius: Swift.Float = -1, dialogPrimaryButtonTextColor: UIKit.UIColor = UIColor.white, dialogPrimaryButtonBorder: Swift.Bool = true, dialogPrimaryButtonBorderColor: UIKit.UIColor = UIColor.white, dialogSecondaryButtonFontBold: Swift.Bool = false, dialogSecondaryButtonBackgroundColor: UIKit.UIColor = UIColor.clear, dialogSecondaryButtonBorderRadius: Swift.Float = -1, dialogSecondaryButtonTextColor: UIKit.UIColor = UIColor.white, dialogSecondaryButtonBorder: Swift.Bool = false, dialogSecondaryButtonBorderColor: UIKit.UIColor = UIColor.clear)
+  @objc public var fontFamily: Swift.String?
+  @objc public var titleFontSize: Swift.Int
+  @objc public var radioUIFontSizeHuge: Swift.Int
+  @objc public var radioUIFontSizeLarge: Swift.Int
+  @objc public var radioUIFontSizeRegular: Swift.Int
+  @objc public var radioUIFontSizeSmall: Swift.Int
+  @objc public var radioUIFontSizeTiny: Swift.Int
+  @objc public var radioUIFontSizeMatchMachine: Swift.Int
+  @objc public var textFieldFontBold: Swift.Bool
+  @objc public var textFieldBackgroundColor: UIKit.UIColor
+  @objc public var textFieldBorderRadius: Swift.Float
+  @objc public var textFieldTextColor: UIKit.UIColor
+  @objc public var textFieldPlaceholderTextColor: UIKit.UIColor
+  @objc public var dialogTitleFontBold: Swift.Bool
+  @objc public var dialogTitleTextColor: UIKit.UIColor
+  @objc public var dialogDescriptionFontBold: Swift.Bool
+  @objc public var dialogDescriptionTextColor: UIKit.UIColor
+  @objc public var dialogPrimaryButtonFontBold: Swift.Bool
+  @objc public var dialogPrimaryButtonBackgroundColor: UIKit.UIColor
+  @objc public var dialogPrimaryButtonBorderRadius: Swift.Float
+  @objc public var dialogPrimaryButtonTextColor: UIKit.UIColor
+  @objc public var dialogPrimaryButtonBorder: Swift.Bool
+  @objc public var dialogPrimaryButtonBorderColor: UIKit.UIColor
+  @objc public var dialogSecondaryButtonFontBold: Swift.Bool
+  @objc public var dialogSecondaryButtonBackgroundColor: UIKit.UIColor
+  @objc public var dialogSecondaryButtonBorderRadius: Swift.Float
+  @objc public var dialogSecondaryButtonTextColor: UIKit.UIColor
+  @objc public var dialogSecondaryButtonBorder: Swift.Bool
+  @objc public var dialogSecondaryButtonBorderColor: UIKit.UIColor
+  @objc deinit
+}
+@objc public class RadioSDKFeatureSetConfig : ObjectiveC.NSObject {
+  @objc public init(allowFX: Swift.Bool = true, allowAudioEffects: Swift.Bool = true, allowBackgrounds: Swift.Bool = true, allowCommenting: Swift.Bool = true, allowVoiceOver: Swift.Bool = true, allowSongSuggestions: Swift.Bool = true, allowInvites: Swift.Bool = true, allowPublicBroadcasts: Swift.Bool = true, allowStudio: Swift.Bool = false, deeplinkToUser: Swift.String = "")
+  @objc public var allowFX: Swift.Bool
+  @objc public var allowAudioEffects: Swift.Bool
+  @objc public var allowBackgrounds: Swift.Bool
+  @objc public var allowCommenting: Swift.Bool
+  @objc public var allowVoiceOver: Swift.Bool
+  @objc public var allowSongSuggestions: Swift.Bool
+  @objc public var allowInvites: Swift.Bool
+  @objc public var allowPublicBroadcasts: Swift.Bool
+  @objc public var allowStudio: Swift.Bool
+  @objc public var deeplinkToUser: Swift.String
+  @objc deinit
+}
+@objc public class RadioSDKConfig : PacemakerRadio.AutomixSDKConfig {
+  @objc public static func colorToInt(color: UIKit.UIColor) -> Swift.Int
+  @objc public static func intToColor(colorInt: Swift.Int) -> UIKit.UIColor
+  @objc public init(apiKey: Swift.String, country: Swift.String, storeId: Swift.String, applicationId: Swift.String, featureSetConfig: PacemakerRadio.RadioSDKFeatureSetConfig = RadioSDKFeatureSetConfig(), uiConfig: PacemakerRadio.RadioSDKUIConfig = RadioSDKUIConfig())
+  @objc public var featureSetConfig: PacemakerRadio.RadioSDKFeatureSetConfig
+  @objc public var uiConfig: PacemakerRadio.RadioSDKUIConfig
+  @objc deinit
+}
+@_inheritsConvenienceInitializers @objc public class AutomixSDKArtistModel : ObjectiveC.NSObject, Swift.Codable {
+  @objc public var Name: Swift.String?
+  @objc override dynamic public init()
+  @objc deinit
+  public func encode(to encoder: any Swift.Encoder) throws
+  required public init(from decoder: any Swift.Decoder) throws
+}
+@_inheritsConvenienceInitializers @objc public class AutomixSDKPluginMetadataModel : ObjectiveC.NSObject, Swift.Codable {
+  @objc public var `Type`: Swift.String?
+  @objc public var Meta: Swift.String?
+  @objc override dynamic public init()
+  @objc deinit
+  public func encode(to encoder: any Swift.Encoder) throws
+  required public init(from decoder: any Swift.Decoder) throws
+}
+@_inheritsConvenienceInitializers @objc public class AutomixSDKWaveformModel : ObjectiveC.NSObject {
+  @objc public var xAxis: [Foundation.NSNumber]?
+  @objc public var yAxis: [Foundation.NSNumber]?
+  @objc public var leftTransitionStartIndex: Swift.Int
+  @objc public var leftTransitionEndIndex: Swift.Int
+  @objc public var rightTransitionStartIndex: Swift.Int
+  @objc public var rightTransitionEndIndex: Swift.Int
+  @objc public var indicesPerSecond: Swift.Float
+  @objc public var leftTransitionStartTime: Swift.Float
+  @objc public var leftTransitionEndTime: Swift.Float
+  @objc public var leftTransitionDuration: Swift.Float
+  @objc public var rightTransitionStartTime: Swift.Float
+  @objc public var rightTransitionEndTime: Swift.Float
+  @objc public var rightTransitionDuration: Swift.Float
+  @objc public var trackDurationSeconds: Swift.Float
+  @objc public var placeholder: Swift.Bool
+  @objc public var nextTrack0SecondsAnchorTime: Swift.Float
+  @objc override dynamic public init()
+  @objc deinit
+}
+@objc public class AutomixSDKTrackModel : ObjectiveC.NSObject, Swift.Codable {
+  public var TrackId: Swift.Int
+  @objc public var Artists: [PacemakerRadio.AutomixSDKArtistModel]?
+  @objc public var Name: Swift.String?
+  public var Duration: Swift.Int?
+  public var IsExplicit: Swift.Bool?
+  public var TrackNumber: Swift.Int?
+  @objc public var ReleaseName: Swift.String?
+  @objc public var trackIdentifier: Swift.String {
+    @objc get
+    @objc set
+  }
+  @objc public var trackNumber: Swift.Int {
+    @objc get
+    @objc set
+  }
+  @objc public var duration: Swift.Int {
+    @objc get
+    @objc set
+  }
+  @objc public var key: Swift.String? {
+    @objc get
+  }
+  @objc public var isExplicit: Swift.Bool {
+    @objc get
+    @objc set
+  }
+  @objc public var bpm: Swift.Double {
+    @objc get
+  }
+  @objc public var Image: Swift.String?
+  @objc public init(trackId: Swift.String, artistName: Swift.String, name: Swift.String, duration: Swift.Int, isExplicit: Swift.Bool, trackNumber: Swift.Int, releaseName: Swift.String, key: Swift.String?, tempo: Swift.Float, image: Swift.String?)
+  @objc deinit
+  public func encode(to encoder: any Swift.Encoder) throws
+  required public init(from decoder: any Swift.Decoder) throws
+}
+@_inheritsConvenienceInitializers @objc public class TunedAuthenticationResponse : ObjectiveC.NSObject, Swift.Codable {
+  @objc public var access_token: Swift.String?
+  @objc public var token_type: Swift.String?
+  public var expires_in: Swift.Int?
+  @objc public var refresh_token: Swift.String?
+  @objc public var tuned_user_id: Swift.String?
+  @objc override dynamic public init()
+  @objc deinit
+  public func encode(to encoder: any Swift.Encoder) throws
+  required public init(from decoder: any Swift.Decoder) throws
+}
+@objc public enum AutomixSDKPlaylistOperationType : Swift.Int {
+  case Added = 0
+  case Removed
+  case Moved
+  public init?(rawValue: Swift.Int)
+  public typealias RawValue = Swift.Int
+  public var rawValue: Swift.Int {
+    get
+  }
+}
+@_inheritsConvenienceInitializers @objc public class AutomixSDKPlaylistOperation : ObjectiveC.NSObject {
+  @objc public var type: PacemakerRadio.AutomixSDKPlaylistOperationType
+  @objc public var fromIndex: Swift.Int
+  @objc public var toIndex: Swift.Int
+  @objc public var trackIdentifier: Swift.String?
+  @objc public var trackInstance: Swift.Int
+  @objc override dynamic public init()
+  @objc deinit
+}
+@_inheritsConvenienceInitializers @objc public class AutomixSDKMixtapeCounters : ObjectiveC.NSObject, Swift.Codable {
+  @objc public var mixPlays: Swift.Int {
+    @objc get
+  }
+  @objc public var mixLikes: Swift.Int {
+    @objc get
+  }
+  @objc public var mixRemixes: Swift.Int {
+    @objc get
+  }
+  @objc public var mixReposts: Swift.Int {
+    @objc get
+  }
+  @objc public var mixComments: Swift.Int {
+    @objc get
+  }
+  @objc public var mixBranchDepth: Swift.Int {
+    @objc get
+  }
+  @objc public var mixBranchPosition: Swift.Int {
+    @objc get
+  }
+  @objc public var mixRecommendations: Swift.Int {
+    @objc get
+  }
+  @objc public var mixMlScore: Swift.Float {
+    @objc get
+  }
+  @objc override dynamic public init()
+  @objc deinit
+  public func encode(to encoder: any Swift.Encoder) throws
+  required public init(from decoder: any Swift.Decoder) throws
+}
+@_inheritsConvenienceInitializers @objc public class AutomixSDKMixtapeTrackImage : ObjectiveC.NSObject, Swift.Codable {
+  @objc public var url: Swift.String?
+  @objc public var imageHeight: Swift.Int {
+    @objc get
+  }
+  @objc public var imageWidth: Swift.Int {
+    @objc get
+  }
+  @objc override dynamic public init()
+  @objc deinit
+  public func encode(to encoder: any Swift.Encoder) throws
+  required public init(from decoder: any Swift.Decoder) throws
+}
+@_inheritsConvenienceInitializers @objc public class AutomixSDKMixtapeTrack : ObjectiveC.NSObject, Swift.Codable {
+  @objc public var service: Swift.String?
+  @objc public var trackRef: Swift.String?
+  @objc public var images: [PacemakerRadio.AutomixSDKMixtapeTrackImage]?
+  @objc public var color: Swift.String?
+  @objc public var artist: Swift.String?
+  @objc public var title: Swift.String?
+  public var duration: Swift.Int64?
+  public var explicit: Swift.Bool?
+  @objc public var availableMarkets: [Swift.String]?
+  @objc public var previewURL: Swift.String?
+  public var bpm: Swift.Float?
+  @objc public var key: Swift.String?
+  @objc public var trackDuration: Swift.Int64 {
+    @objc get
+  }
+  @objc public var trackExplicit: Swift.Bool {
+    @objc get
+  }
+  @objc public var trackBpm: Swift.Float {
+    @objc get
+  }
+  @objc override dynamic public init()
+  @objc deinit
+  public func encode(to encoder: any Swift.Encoder) throws
+  required public init(from decoder: any Swift.Decoder) throws
+}
+@_inheritsConvenienceInitializers @objc public class AutomixSDKWaveformBlob : ObjectiveC.NSObject, Swift.Codable {
+  @objc public var blob: Swift.String?
+  @objc override dynamic public init()
+  @objc deinit
+  public func encode(to encoder: any Swift.Encoder) throws
+  required public init(from decoder: any Swift.Decoder) throws
+}
+@_inheritsConvenienceInitializers @objc public class AutomixSDKList : ObjectiveC.NSObject {
+  @objc public func listNext() -> Swift.String?
+  @objc public func listNextStart() -> Swift.String?
+  @objc public func listItems() -> [Swift.AnyObject]?
+  @objc public func listTotal() -> Swift.Int
+  @objc public func listLimit() -> Swift.Int
+  @objc override dynamic public init()
+  @objc deinit
+}
+@_inheritsConvenienceInitializers public class AutomixSDKGenericList<T> : PacemakerRadio.AutomixSDKList, Swift.Codable where T : Swift.Decodable, T : Swift.Encodable {
+  @objc override public func listNext() -> Swift.String?
+  @objc override public func listNextStart() -> Swift.String?
+  @objc override public func listItems() -> [Swift.AnyObject]?
+  @objc override public func listTotal() -> Swift.Int
+  @objc override public func listLimit() -> Swift.Int
+  @objc override dynamic public init()
+  @objc deinit
+  public func encode(to encoder: any Swift.Encoder) throws
+  required public init(from decoder: any Swift.Decoder) throws
+}
+@_inheritsConvenienceInitializers @objc public class AutomixSDKMixtapeLite : ObjectiveC.NSObject, Swift.Codable {
+  @objc public var mixId: Swift.String?
+  @objc public var href: Swift.String?
+  @objc override dynamic public init()
+  @objc deinit
+  public func encode(to encoder: any Swift.Encoder) throws
+  required public init(from decoder: any Swift.Decoder) throws
+}
+@_inheritsConvenienceInitializers @objc public class AutomixSDKMixtape : ObjectiveC.NSObject, Swift.Codable {
+  @objc public var id: Swift.String? {
+    @objc get
+  }
+  @objc public var mixId: Swift.String?
+  @objc public var href: Swift.String? {
+    @objc get
+    @objc set
+  }
+  @objc public var title: Swift.String?
+  @objc public var descr: Swift.String?
+  @objc public var created: Foundation.Date?
+  @objc public var updated: Foundation.Date?
+  @objc public var tags: [Swift.String]?
+  @objc public var tracks: [PacemakerRadio.AutomixSDKMixtapeTrack]?
+  @objc public var counters: PacemakerRadio.AutomixSDKMixtapeCounters?
+  @objc public var minEngineVersion: Swift.String?
+  @objc public var waveform: PacemakerRadio.AutomixSDKWaveformBlob?
+  @objc public var status: Swift.String?
+  @objc public var author: PacemakerRadio.AutomixSDKUser?
+  @objc public var originMix: PacemakerRadio.AutomixSDKMixtapeLite?
+  @objc public var deleted: Foundation.Date?
+  @objc public var recommendedDate: Foundation.Date?
+  @objc public var cocreators: [PacemakerRadio.AutomixSDKUser]?
+  @objc public var mixLength: Swift.Int {
+    @objc get
+  }
+  @objc public var mixIsDraft: Swift.Bool {
+    @objc get
+  }
+  @objc public var mixUserLikes: Swift.Bool {
+    @objc get
+  }
+  @objc public var mixPlus: Swift.Bool {
+    @objc get
+  }
+  @objc public var mixLive: Swift.Bool {
+    @objc get
+  }
+  @objc public var mixRecipeHash: Swift.Int64 {
+    @objc get
+  }
+  @objc public var mixLastForeignUpdate: Swift.Int64 {
+    @objc get
+  }
+  @objc override dynamic public init()
+  @objc deinit
+  public func encode(to encoder: any Swift.Encoder) throws
+  required public init(from decoder: any Swift.Decoder) throws
+}
+@_inheritsConvenienceInitializers @objc public class AutomixSDKUser : ObjectiveC.NSObject, Swift.Codable {
+  @objc public var userId: Swift.String?
+  @objc public var alias: Swift.String?
+  @objc public var userThumbnail: Swift.String?
+  @objc public var userFollowers: Swift.Int {
+    @objc get
+  }
+  @objc public var userFollowing: Swift.Int {
+    @objc get
+  }
+  @objc public var userMixCount: Swift.Int {
+    @objc get
+  }
+  @objc public var userPlus: Swift.Bool {
+    @objc get
+  }
+  @objc public var isUserFollowing: Swift.Bool {
+    @objc get
+  }
+  @objc override dynamic public init()
+  @objc deinit
+  public func encode(to encoder: any Swift.Encoder) throws
+  required public init(from decoder: any Swift.Decoder) throws
+}
+@objc public enum _HMACAlgorithm : Swift.Int {
+  case MD5, SHA1, SHA224, SHA256, SHA384, SHA512
+  public init?(rawValue: Swift.Int)
+  public typealias RawValue = Swift.Int
+  public var rawValue: Swift.Int {
+    get
+  }
+}
+@objc public enum AutomixSDKPlaybackMode : Swift.Int {
+  case automix
+  case liveCreation
+  case liveConsumption
+  public init?(rawValue: Swift.Int)
+  public typealias RawValue = Swift.Int
+  public var rawValue: Swift.Int {
+    get
+  }
+}
+@objc public enum AutomixSDKStatusVariable : Swift.Int {
+  case playing
+  case mixing
+  case playingTrackIdentifier
+  case playingTrackIndex
+  case playingTrackCurrentTime
+  case playingTrackTotalTime
+  case playingTrackStreamingProgress
+  case replayOn
+  case canSkipToPrevious
+  case canBack
+  case canSkipToNext
+  case canPlayPause
+  case canSeek
+  case canReorderTracks
+  case readyToPlay
+  case canMixNow
+  case playlist
+  case muted
+  case playSpeed
+  case normalisedVolume
+  case preferredTransitionDurationSeconds
+  case requestedLoopTrackIdentifier
+  case requestedPauseTrackIdentifier
+  case vinylStartStop
+  case nextTransitionDuration
+  case transitionStartTimeSeconds
+  case failedTrackLoadIdentifiers
+  case canOnOff
+  case playingTrackOriginalSessionId
+  case explicitLyricsFiltering
+  case mixId
+  case playbackMode
+  case playlistDiff
+  public init?(rawValue: Swift.Int)
+  public typealias RawValue = Swift.Int
+  public var rawValue: Swift.Int {
+    get
+  }
+}
+@_inheritsConvenienceInitializers @objc public class AutomixSDKStatus : ObjectiveC.NSObject, Foundation.NSCopying {
+  @objc public var playing: Swift.Bool
+  @objc public var mixing: Swift.Bool
+  @objc public var playingTrackIdentifier: Swift.String?
+  @objc public var playingTrackIndex: Swift.Int
+  @objc public var playingTrackCurrentTime: Foundation.TimeInterval
+  @objc public var playingTrackTotalTime: Foundation.TimeInterval
+  @objc public var playingTrackStreamingProgress: Swift.Float
+  @objc public var replayOn: Swift.Bool
+  @objc public var canSkipToPrevious: Swift.Bool
+  @objc public var canBack: Swift.Bool
+  @objc public var canSkipToNext: Swift.Bool
+  @objc public var canPlayPause: Swift.Bool
+  @objc public var canSeek: Swift.Bool
+  @objc public var canReorderTracks: Swift.Bool
+  @objc public var readyToPlay: Swift.Bool
+  @objc public var canMixNow: Swift.Bool
+  @objc public var playlist: [Swift.String]
+  @objc public var muted: Swift.Bool
+  @objc public var playSpeed: Swift.Float
+  @objc public var normalisedVolume: Swift.Float
+  @objc public var preferredTransitionDurationSeconds: Swift.Float
+  @objc public var requestedLoopTrackIdentifier: Swift.String?
+  @objc public var requestedPauseTrackIdentifier: Swift.String?
+  @objc public var vinylStartStop: Swift.Bool
+  @objc public var nextTransitionDuration: Swift.Float
+  @objc public var transitionStartTimeSeconds: Swift.Float
+  @objc public var failedTrackLoadIdentifiers: [Swift.String]?
+  @objc public var canOnOff: Swift.Bool
+  @objc public var playingTrackOriginalSessionId: Swift.String?
+  @objc public var explicitLyricsFiltering: Swift.Bool
+  @objc public var mixId: Swift.Int64
+  @objc public var playbackMode: Swift.Int
+  @objc public var playlistDiff: [Swift.String : [PacemakerRadio.AutomixSDKPlaylistOperation]]?
+  @objc override dynamic public init()
+  @objc public func copy(with zone: ObjectiveC.NSZone? = nil) -> Any
+  @objc public static func automixSDKStatusVariableName(_ variable: PacemakerRadio.AutomixSDKStatusVariable) -> Swift.String
+  @objc public func variableValue(_ variable: PacemakerRadio.AutomixSDKStatusVariable) -> Any
+  @objc public static func allStatusVariables() -> [Foundation.NSNumber]
+  @objc deinit
+}
+@objc public protocol AutomixSDKStatusObserverDelegate : ObjectiveC.NSObjectProtocol {
+  @objc func statusChanged(variables: [Foundation.NSNumber], status: PacemakerRadio.AutomixSDKStatus)
+  @objc optional func playbackEvent(type: PacemakerRadio.AutomixSDKPlaybackEventType, identifier: Swift.String?, originalSessionId: Swift.String?, status: PacemakerRadio.AutomixSDKStatus?)
+  @objc optional func waveformDataAvailable(identifier: Swift.String)
+}
+extension Swift.String {
+  public var localized: Swift.String {
+    get
+  }
+}
+@objc public protocol RadioUIDelegate {
+  @objc func presentTracklist(completion: @escaping (_ tracks: [PacemakerRadio.AutomixSDKTrackModel]?, _ playlistName: Swift.String?) -> Swift.Void)
+  @objc func presentAuthentication(completion: @escaping (_ success: Swift.Bool) -> Swift.Void)
+  @objc func presentProfile(identifier: Swift.String?, completion: @escaping () -> Swift.Void)
+  @objc func isTrackLiked(identifier: Swift.String, completion: @escaping (_ isLiked: Swift.Bool) -> Swift.Void)
+  @objc func setTrackLiked(identifier: Swift.String, liked: Swift.Bool, completion: @escaping (_ error: (any Swift.Error)?, _ success: Swift.Bool) -> Swift.Void)
+  @objc optional func didDismissRadioUI()
+  @objc optional func willDismissRadioUI()
+  @objc optional func didCloseRadioUI()
+  @objc optional func willCloseRadioUI()
+}
+@_inheritsConvenienceInitializers @objc public class RadioSDK : ObjectiveC.NSObject {
+  @objc public static func initialise(config: PacemakerRadio.RadioSDKConfig, tunedDelegate: any PacemakerRadio.TunedRestDelegate, statusDelegate: any PacemakerRadio.AutomixSDKStatusObserverDelegate, radioUIDelegate: any PacemakerRadio.RadioUIDelegate, musicCacheDelegate: (any PacemakerRadio.TunedMusicCacheDelegate)?, completion: ((_ error: (any Swift.Error)?) -> Swift.Void)?)
+  @objc public func terminate()
+  @objc public static let instance: PacemakerRadio.RadioSDK
+  @objc public func clearCache(completion: ((_ error: (any Swift.Error)?) -> Swift.Void)?)
+  @objc public func setMusicCacheDelegate(_ musicCacheDelegate: any PacemakerRadio.TunedMusicCacheDelegate)
+  @objc public func addStatusObserverDelegate(_ statusObserverDelegate: any PacemakerRadio.AutomixSDKStatusObserverDelegate)
+  @objc public func removeStatusObserverDelegate(_ statusObserverDelegate: any PacemakerRadio.AutomixSDKStatusObserverDelegate)
+  @objc public func startRadioSession(identifiers: [Swift.String], metadata: [PacemakerRadio.AutomixSDKTrackModel]?, playTrackIndex: Swift.Int32, seconds: Swift.Float, autoplay: Swift.Bool, contextType: Swift.String?, contextId: Swift.String?, completion: ((_ error: (any Swift.Error)?, _ radioViewController: UIKit.UIViewController?) -> Swift.Void)?)
+  @objc public func startRadioSession(completion: ((_ error: (any Swift.Error)?, _ radioViewController: UIKit.UIViewController?) -> Swift.Void)?)
+  @objc public func endRadioSession()
+  @objc public func radioUIViewController() -> UIKit.UIViewController?
+  @objc public func getLiveShows(limit: Swift.Int, start: Swift.String?, completion: @escaping (_ error: (any Swift.Error)?, _ liveMixtapes: PacemakerRadio.AutomixSDKList?) -> Swift.Void)
+  @objc public func reportUser(identifier: Swift.String, completion: ((_ error: (any Swift.Error)?) -> Swift.Void)?)
+  @objc public func reportMixtape(identifier: Swift.String, completion: ((_ error: (any Swift.Error)?) -> Swift.Void)?)
+  @objc public func notifyFollowers(userIdentifier: Swift.String, title: Swift.String, body: Swift.String, objectType: Swift.String, objectId: Swift.String, completion: ((_ error: (any Swift.Error)?) -> Swift.Void)?)
+  @objc public func joinLiveMixtape(identifier: Swift.String, completion: @escaping (_ error: (any Swift.Error)?, _ radioViewController: UIKit.UIViewController?) -> Swift.Void)
+  @objc public static func initialised() -> Swift.Bool
+  @objc override dynamic public init()
+  @objc deinit
+}
+public func __duff_trace(_ condition: Swift.Int, _ message: @autoclosure () -> Swift.String)
+public func __duff_debug(_ message: @autoclosure () -> Swift.String)
+public func __duff_info(_ message: Swift.String)
+public func __duff_warn(_ message: Swift.String)
+public func __duff_error(_ message: Swift.String)
+public func __duff_fatal(_ message: Swift.String)
+public func __duff_assert(_ condition: @autoclosure () -> Swift.Bool, _ message: @autoclosure () -> Swift.String = String(), file: Swift.StaticString = #file, line: Swift.UInt = #line)
+public func __duff_assert_false(_ message: @autoclosure () -> Swift.String = String(), file: Swift.StaticString = #file, line: Swift.UInt = #line)
+public func __duff_exception_message(_ message: Swift.String = String())
+@objc public protocol TunedMusicCacheDelegate : ObjectiveC.NSObjectProtocol {
+  @objc func trackDownloadCompleted(trackId: Swift.String, data: Foundation.Data)
+  @objc func trackDownloadProgressChanged(trackId: Swift.String, progress: Swift.Float)
+  @objc func getCachedTrack(trackId: Swift.String) -> Foundation.Data?
+  @objc func getTrackMetadata(trackId: Swift.String?) -> PacemakerRadio.AutomixSDKTrackModel?
+}
+@objc public protocol TunedRestDelegate : ObjectiveC.NSObjectProtocol {
+  @objc func tunedRestTokenExpired(deviceIdentifierForVendor: Swift.String, countryCode: Swift.String, tunedUserId: Swift.String?, oldAccessToken: Swift.String?, refreshToken: Swift.String?, tokenType: Swift.String?, completion: @escaping (_ error: (any Swift.Error)?, _ credentials: PacemakerRadio.TunedAuthenticationResponse?, _ tunedUserId: Swift.String?) -> Swift.Void)
+  @objc optional func asyncGetAuthenticatedDevice(deviceIdentifierForVendor: Swift.String, completion: @escaping (_ error: (any Swift.Error)?, _ tunedDeviceId: Swift.String?) -> Swift.Void)
+  @objc func uniqueDeviceIdentifier() -> Swift.String
+  @objc optional func logAutomixSDKMessage(logLevel: PacemakerRadio.AutomixSDKLogLevel, message: Swift.String)
+}
+extension Swift.String {
+  public var a: Swift.String {
+    get
+  }
+  public var b: Swift.String {
+    get
+  }
+  public var c: Swift.String {
+    get
+  }
+  public var d: Swift.String {
+    get
+  }
+  public var e: Swift.String {
+    get
+  }
+  public var f: Swift.String {
+    get
+  }
+  public var g: Swift.String {
+    get
+  }
+  public var h: Swift.String {
+    get
+  }
+  public var i: Swift.String {
+    get
+  }
+  public var j: Swift.String {
+    get
+  }
+  public var k: Swift.String {
+    get
+  }
+  public var l: Swift.String {
+    get
+  }
+  public var m: Swift.String {
+    get
+  }
+  public var n: Swift.String {
+    get
+  }
+  public var o: Swift.String {
+    get
+  }
+  public var p: Swift.String {
+    get
+  }
+  public var q: Swift.String {
+    get
+  }
+  public var r: Swift.String {
+    get
+  }
+  public var s: Swift.String {
+    get
+  }
+  public var t: Swift.String {
+    get
+  }
+  public var u: Swift.String {
+    get
+  }
+  public var v: Swift.String {
+    get
+  }
+  public var w: Swift.String {
+    get
+  }
+  public var x: Swift.String {
+    get
+  }
+  public var y: Swift.String {
+    get
+  }
+  public var z: Swift.String {
+    get
+  }
+}
+extension Swift.String {
+  public var A: Swift.String {
+    get
+  }
+  public var B: Swift.String {
+    get
+  }
+  public var C: Swift.String {
+    get
+  }
+  public var D: Swift.String {
+    get
+  }
+  public var E: Swift.String {
+    get
+  }
+  public var F: Swift.String {
+    get
+  }
+  public var G: Swift.String {
+    get
+  }
+  public var H: Swift.String {
+    get
+  }
+  public var I: Swift.String {
+    get
+  }
+  public var J: Swift.String {
+    get
+  }
+  public var K: Swift.String {
+    get
+  }
+  public var L: Swift.String {
+    get
+  }
+  public var M: Swift.String {
+    get
+  }
+  public var N: Swift.String {
+    get
+  }
+  public var O: Swift.String {
+    get
+  }
+  public var P: Swift.String {
+    get
+  }
+  public var Q: Swift.String {
+    get
+  }
+  public var R: Swift.String {
+    get
+  }
+  public var S: Swift.String {
+    get
+  }
+  public var T: Swift.String {
+    get
+  }
+  public var U: Swift.String {
+    get
+  }
+  public var V: Swift.String {
+    get
+  }
+  public var W: Swift.String {
+    get
+  }
+  public var X: Swift.String {
+    get
+  }
+  public var Y: Swift.String {
+    get
+  }
+  public var Z: Swift.String {
+    get
+  }
+}
+extension Swift.String {
+  public var _1: Swift.String {
+    get
+  }
+  public var _2: Swift.String {
+    get
+  }
+  public var _3: Swift.String {
+    get
+  }
+  public var _4: Swift.String {
+    get
+  }
+  public var _5: Swift.String {
+    get
+  }
+  public var _6: Swift.String {
+    get
+  }
+  public var _7: Swift.String {
+    get
+  }
+  public var _8: Swift.String {
+    get
+  }
+  public var _9: Swift.String {
+    get
+  }
+  public var _0: Swift.String {
+    get
+  }
+}
+extension Swift.String {
+  public var space: Swift.String {
+    get
+  }
+  public var point: Swift.String {
+    get
+  }
+  public var dash: Swift.String {
+    get
+  }
+  public var comma: Swift.String {
+    get
+  }
+  public var semicolon: Swift.String {
+    get
+  }
+  public var colon: Swift.String {
+    get
+  }
+  public var apostrophe: Swift.String {
+    get
+  }
+  public var quotation: Swift.String {
+    get
+  }
+  public var plus: Swift.String {
+    get
+  }
+  public var equals: Swift.String {
+    get
+  }
+  public var paren_left: Swift.String {
+    get
+  }
+  public var paren_right: Swift.String {
+    get
+  }
+  public var asterisk: Swift.String {
+    get
+  }
+  public var ampersand: Swift.String {
+    get
+  }
+  public var caret: Swift.String {
+    get
+  }
+  public var percent: Swift.String {
+    get
+  }
+  public var dollar: Swift.String {
+    get
+  }
+  public var pound: Swift.String {
+    get
+  }
+  public var at: Swift.String {
+    get
+  }
+  public var exclamation: Swift.String {
+    get
+  }
+  public var question_mark: Swift.String {
+    get
+  }
+  public var back_slash: Swift.String {
+    get
+  }
+  public var forward_slash: Swift.String {
+    get
+  }
+  public var curly_left: Swift.String {
+    get
+  }
+  public var curly_right: Swift.String {
+    get
+  }
+  public var bracket_left: Swift.String {
+    get
+  }
+  public var bracket_right: Swift.String {
+    get
+  }
+  public var bar: Swift.String {
+    get
+  }
+  public var less_than: Swift.String {
+    get
+  }
+  public var greater_than: Swift.String {
+    get
+  }
+  public var underscore: Swift.String {
+    get
+  }
+}
+extension Swift.String {
+  public var dot: Swift.String {
+    get
+  }
+}
+extension PacemakerRadio.AutomixSDKPlaybackEventType : Swift.Equatable {}
+extension PacemakerRadio.AutomixSDKPlaybackEventType : Swift.Hashable {}
+extension PacemakerRadio.AutomixSDKPlaybackEventType : Swift.RawRepresentable {}
+extension PacemakerRadio.AutomixSDKErrorCode : Swift.Equatable {}
+extension PacemakerRadio.AutomixSDKErrorCode : Swift.Hashable {}
+extension PacemakerRadio.AutomixSDKErrorCode : Swift.RawRepresentable {}
+extension PacemakerRadio.AutomixSDKLogLevel : Swift.Equatable {}
+extension PacemakerRadio.AutomixSDKLogLevel : Swift.Hashable {}
+extension PacemakerRadio.AutomixSDKLogLevel : Swift.RawRepresentable {}
+extension PacemakerRadio.AutomixSDKPlaylistOperationType : Swift.Equatable {}
+extension PacemakerRadio.AutomixSDKPlaylistOperationType : Swift.Hashable {}
+extension PacemakerRadio.AutomixSDKPlaylistOperationType : Swift.RawRepresentable {}
+extension PacemakerRadio._HMACAlgorithm : Swift.Equatable {}
+extension PacemakerRadio._HMACAlgorithm : Swift.Hashable {}
+extension PacemakerRadio._HMACAlgorithm : Swift.RawRepresentable {}
+extension PacemakerRadio.AutomixSDKPlaybackMode : Swift.Equatable {}
+extension PacemakerRadio.AutomixSDKPlaybackMode : Swift.Hashable {}
+extension PacemakerRadio.AutomixSDKPlaybackMode : Swift.RawRepresentable {}
+extension PacemakerRadio.AutomixSDKStatusVariable : Swift.Equatable {}
+extension PacemakerRadio.AutomixSDKStatusVariable : Swift.Hashable {}
+extension PacemakerRadio.AutomixSDKStatusVariable : Swift.RawRepresentable {}
