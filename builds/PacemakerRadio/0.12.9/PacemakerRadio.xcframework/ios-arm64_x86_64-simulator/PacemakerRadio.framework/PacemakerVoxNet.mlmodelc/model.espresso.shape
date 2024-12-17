@@ -1,0 +1,40 @@
+{
+  "layer_shapes" : {
+    "dense_2_output" : {
+      "k" : 48,
+      "w" : 1,
+      "n" : 1,
+      "h" : 1
+    },
+    "dense_2__activation___output" : {
+      "k" : 48,
+      "w" : 1,
+      "n" : 1,
+      "h" : 1
+    },
+    "voicedFactor" : {
+      "k" : 1,
+      "w" : 1,
+      "n" : 1,
+      "h" : 1
+    },
+    "voxNetFeats" : {
+      "k" : 80,
+      "w" : 1,
+      "n" : 1,
+      "h" : 1
+    },
+    "dense_1_output" : {
+      "k" : 48,
+      "w" : 1,
+      "n" : 1,
+      "h" : 1
+    },
+    "dense_1__activation___output" : {
+      "k" : 48,
+      "w" : 1,
+      "n" : 1,
+      "h" : 1
+    }
+  }
+}
